@@ -45,7 +45,8 @@ local handle_output = function(chan_id, data, name)
 		if cmd_input ~= "" and vim.fn.matchstr(value, "^" .. cmd_input) ~= "" then
 			-- clear
 			cmd_input = ""
-		else
+		-- discard empty fields
+		elseif cmd_input ~= "" then
 			cmd_output = cmd_output .. value .. '\n'
 		end
 
